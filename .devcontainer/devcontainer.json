@@ -1,0 +1,133 @@
+{
+  "name": "Gauge Test Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "getgauge.gauge",
+        "ms-python.python",
+        "njpwerner.autodocstring",
+        "aaron-bond.better-comments",
+        "ms-python.black-formatter",
+        "IronGeek.vscode-env",
+        "usernamehw.errorlens",
+        "tamasfe.even-better-toml",
+        "codezombiech.gitignore",
+        "tal7aouy.icons",
+        "DavidWang.ini-for-vscode",
+        "AykutSarac.jsoncrack-vscode",
+        "yzhang.markdown-all-in-one",
+        "christian-kohler.path-intellisense",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "twixes.pypi-assistant",
+        "charliermarsh.ruff",
+        "SonarSource.sonarlint-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.associations": {
+          "*.spec": "gauge",
+          "*.cpt": "gauge"
+        },
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 500,
+        "editor.formatOnSave": true,
+        "editor.fontFamily": "Fira Code",
+        "editor.fontLigatures": true,
+        "editor.fontSize": 13,
+        "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+        "terminal.integrated.fontSize": 12,
+        "explorer.compactFolders": false,
+        "workbench.editor.enablePreview": false,
+        "[markdown]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": true
+        },
+        "diffEditor.codeLens": true,
+        "git.autofetch": true,
+        "workbench.startupEditor": "none",
+        "editor.linkedEditing": true,
+        "explorer.confirmDragAndDrop": false,
+        "workbench.iconTheme": "icons",
+        "security.workspace.trust.untrustedFiles": "open",
+        "editor.wordWrap": "on",
+        "editor.mouseWheelZoom": true,
+        "editor.cursorBlinking": "expand",
+        "editor.guides.bracketPairs": true,
+        "sonarlint.rules": {
+          "css:S125": {
+            "level": "off"
+          },
+          "Web:AvoidCommentedOutCodeCheck": {
+            "level": "off"
+          }
+        },
+        "editor.gotoLocation.multipleDefinitions": "goto",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "always",
+            "source.unusedImports": "always"
+          }
+        },
+        "ruff.configuration": "./ruff.toml",
+        "git.openRepositoryInParentFolders": "never",
+        "python.analysis.typeCheckingMode": "strict",
+        "files.exclude": {
+          "**/.pytest_cache": true,
+          "**/__pycache__": true
+        },
+        "editor.semanticTokenColorCustomizations": {
+          "rules": {
+            "argument": {
+              "foreground": "#ae81ff"
+            },
+            "stepMarker": {
+              "foreground": "#ffffff"
+            },
+            "step": {
+              "foreground": "#a6e22e"
+            },
+            "table": {
+              "foreground": "#ae81ff"
+            },
+            "tableHeaderSeparator": {
+              "foreground": "#8349f0"
+            },
+            "tableBorder": {
+              "foreground": "#8349f0"
+            },
+            "tagKeyword": {
+              "foreground": "#ff4689"
+            },
+            "tagValue": {
+              "foreground": "#fc88b2"
+            },
+            "specification": {
+              "foreground": "#66d9ef"
+            },
+            "scenario": {
+              "foreground": "#66d9ef"
+            },
+            "gaugeComment": {
+              "foreground": "#cccccc"
+            },
+            "disabledStep": {
+              "foreground": "#228549"
+            }
+          }
+        },
+        "gauge.recommendedSettings.options": "Apply & Reload"
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}

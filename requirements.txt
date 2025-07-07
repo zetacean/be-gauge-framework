@@ -1,0 +1,5 @@
+getgauge==0.4.11
+httpx==0.28.1
+pydantic==2.11.7
+python-decouple==3.8
+PyHamcrest==2.1.0
