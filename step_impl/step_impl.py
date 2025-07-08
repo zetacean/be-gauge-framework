@@ -1,45 +1,22 @@
-from getgauge.python import ExecutionContext, Messages, before_scenario, step
+# type: ignore
+from getgauge.python import data_store, step
+from hamcrest import assert_that, equal_to
+from httpx import Response
 
-vowels = ["a", "e", "i", "o", "u"]
-
-
-def number_of_vowels(word):
-    return len([elem for elem in list(word) if elem in vowels])
-
-
-# --------------------------
-# Gauge step implementations
-# --------------------------
+from api.products import ProductsAPI
 
 
-@step("The word <word> has <number> vowels.")
-def assert_no_of_vowels_in(word, number):
-    assert str(number) == str(number_of_vowels(word))
+@step("Llamar al API de productos")
+def call_to_products_api():
+    fetched_products = ProductsAPI.get_products()
+    data_store.scenario["products"] = fetched_products
 
 
-@step("Vowels in English language are <vowels>.")
-def assert_default_vowels(given_vowels):
-    Messages.write_message("Given vowels are {0}".format(given_vowels))
-    assert given_vowels == "".join(vowels)
-
-
-@step("Almost all words have vowels <table>")
-def assert_words_vowel_count(table):
-    actual = [
-        str(number_of_vowels(word))
-        for word in table.get_column_values_with_name("Word")
-    ]
-    expected = [
-        str(count) for count in table.get_column_values_with_name("Vowel Count")
-    ]
-    assert expected == actual
-
-
-# ---------------
-# Execution Hooks
-# ---------------
-
-
-@before_scenario()
-def before_scenario_hook(context: ExecutionContext):
-    assert "".join(vowels) == "aeiou"
+@step("El status code de la respuesta debe ser <status_code>")
+def validate_status_code(status_code: str):
+    response: Response = data_store.scenario.get("products")
+    assert_that(
+        response.status_code,
+        equal_to(int(status_code)),
+        f"El código esperado ({status_code}) es diferente al obtenido ({response.status_code})",
+    )

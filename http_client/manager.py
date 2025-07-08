@@ -1,7 +1,6 @@
 """Browser manager module."""
 
 import threading
-from typing import Optional
 
 import httpx
 
@@ -17,9 +16,12 @@ class ClientManager:
         cls._local.instance = client
 
     @classmethod
-    def client(cls) -> Optional[httpx.Client]:
-        """Get the current client instance."""
-        return getattr(cls._local, "instance", None)
+    def client(cls) -> httpx.Client:
+        """Get the current client instance, or fail fast if not initialized."""
+        client = getattr(cls._local, "instance", None)
+        if client is None:
+            raise RuntimeError("HTTP client has not been initialized in this thread.")
+        return client
 
     @classmethod
     def close(cls):
